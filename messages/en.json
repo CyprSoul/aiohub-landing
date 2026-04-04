@@ -1,0 +1,98 @@
+{
+  "Navbar": {
+    "login": "Sign In",
+    "register": "Try for Free"
+  },
+  "Hero": {
+    "title": "The Operating System for Your Company",
+    "subtitle": "Tasks, files, calendar, analytics — one window instead of ten tabs",
+    "cta": "Try for Free",
+    "subtext": "Free for teams up to 5 people. No credit card required."
+  },
+  "Problem": {
+    "title": "Sound familiar?",
+    "card1": "Tasks in Jira, discussions in Slack, files in Google Drive — everything is scattered",
+    "card2": "Managers can't see the full picture",
+    "card3": "5-7 different services = $40-50/month per person",
+    "card4": "Notifications everywhere — you can't find anything"
+  },
+  "Solution": {
+    "title": "AIOHub brings everything together in one place",
+    "m1_title": "Projects & Tasks",
+    "m1_desc": "Kanban, deadlines, roles",
+    "m2_title": "Files & Wiki",
+    "m2_desc": "Storage + documentation",
+    "m3_title": "Calendar",
+    "m3_desc": "Meetings and deadlines",
+    "m4_title": "Analytics",
+    "m4_desc": "Burndown, team workload",
+    "m5_title": "Inventory",
+    "m5_desc": "Equipment and resources",
+    "m6_title": "Time Tracking",
+    "m6_desc": "Track working hours"
+  },
+  "Features": {
+    "title": "Modules know about each other",
+    "f1_title": "Tasks + Files",
+    "f1_desc": "Attachments directly in tasks",
+    "f2_title": "Calendar + Tasks",
+    "f2_desc": "Deadlines automatically in the calendar",
+    "f3_title": "Analytics + Team",
+    "f3_desc": "Who did how much"
+  },
+  "Comparison": {
+    "title": "AIOHub vs competitors",
+    "feature": "Feature",
+    "inventory": "Inventory",
+    "wiki": "Wiki",
+    "analytics": "Analytics",
+    "darkTheme": "Dark theme",
+    "timeTracking": "Time tracking",
+    "price": "Price (5 users)",
+    "aioPrice": "Free",
+    "jiraPrice": "$40",
+    "clickupPrice": "$45"
+  },
+  "Pricing": {
+    "title": "Transparent Pricing",
+    "subtitle": "Start for free, scale as you grow",
+    "popular": "Popular",
+    "free_name": "Free",
+    "free_price": "$0",
+    "free_period": "forever",
+    "free_f1": "Up to 5 users",
+    "free_f2": "5 modules of your choice",
+    "free_f3": "1 GB of files",
+    "free_cta": "Start for Free",
+    "pro_name": "Pro",
+    "pro_price": "$12",
+    "pro_period": "month / team",
+    "pro_f1": "Up to 20 users",
+    "pro_f2": "All modules",
+    "pro_f3": "20 GB of files",
+    "pro_f4": "Priority support",
+    "pro_cta": "Choose Pro",
+    "biz_name": "Business",
+    "biz_price": "$29",
+    "biz_period": "month / team",
+    "biz_f1": "Unlimited users",
+    "biz_f2": "All modules + API",
+    "biz_f3": "100 GB of files",
+    "biz_f4": "Custom branding",
+    "biz_cta": "Choose Business"
+  },
+  "CTA": {
+    "title": "Ready to try?",
+    "cta": "Start for Free",
+    "subtext": "Setup takes 2 minutes"
+  },
+  "Footer": {
+    "description": "The operating system for your team",
+    "product": "Product",
+    "pricing": "Pricing",
+    "docs": "Documentation",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "copyright": "© 2026 AIOHub. All rights reserved."
+  }
+}
