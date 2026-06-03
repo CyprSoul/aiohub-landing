@@ -1,125 +1,92 @@
-import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 
 export default function Hero() {
-  const t = useTranslations('Hero');
-
   return (
-    <section className="bg-gray-900 pt-28 pb-20 min-h-screen flex items-center">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-          {/* Text */}
-          <div className="flex-1 text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-medium px-4 py-1.5 rounded-full mb-6">
-              <span className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-pulse" />
-              All-in-one platform
-            </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-              <span className="bg-gradient-to-br from-white via-white to-blue-200 bg-clip-text text-transparent">
-                {t('title')}
-              </span>
-            </h1>
-            <p className="mt-6 text-lg sm:text-xl text-gray-400 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-              {t('subtitle')}
-            </p>
-            <div className="mt-8 flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
-              <a
-                href="https://app.aiohub.app/register"
-                className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-xl text-lg transition-all hover:shadow-lg hover:shadow-blue-500/25 hover:-translate-y-0.5"
-              >
-                {t('cta')}
-              </a>
-            </div>
-            <p className="mt-4 text-sm text-gray-500">{t('subtext')}</p>
+    <section className="relative min-h-screen bg-[#080e1a] flex items-center pt-16 overflow-hidden">
+      {/* Background glows */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-indigo-600/10 rounded-full blur-[120px]" />
+        <div className="absolute top-1/3 left-1/4 w-[400px] h-[400px] bg-violet-600/8 rounded-full blur-[100px]" />
+      </div>
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
+        <div className="flex flex-col items-center text-center mb-14">
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-sm font-medium px-4 py-1.5 rounded-full mb-8">
+            <span className="w-1.5 h-1.5 bg-indigo-400 rounded-full animate-pulse" />
+            14 модулів · Один застосунок
           </div>
 
-          {/* Dashboard Mockup */}
-          <div className="flex-1 w-full max-w-2xl">
-            <div className="relative bg-gray-800 rounded-2xl shadow-2xl border border-gray-700 overflow-hidden">
-              {/* Browser Chrome */}
-              <div className="bg-gray-900 px-4 py-3 flex items-center gap-3 border-b border-gray-700">
-                <div className="flex gap-1.5">
-                  <div className="w-3 h-3 rounded-full bg-red-500/80" />
-                  <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                  <div className="w-3 h-3 rounded-full bg-green-500/80" />
-                </div>
-                <div className="flex-1 bg-gray-700/70 rounded-md py-1 px-3 text-gray-400 text-xs text-center">
-                  app.aiohub.app
-                </div>
+          {/* Headline */}
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight tracking-tight mb-6 max-w-4xl">
+            <span className="text-white">Все для вашої команди</span>
+            <br />
+            <span className="bg-gradient-to-r from-indigo-400 via-violet-400 to-indigo-400 bg-clip-text text-transparent">
+              в одному місці
+            </span>
+          </h1>
+
+          {/* Subtitle */}
+          <p className="text-lg sm:text-xl text-slate-400 max-w-2xl leading-relaxed mb-10">
+            Задачі, проєкти, чат, аналітика, HR, файли та інші модулі —
+            зібрані в одному застосунку, який працює так, як зручно вашій команді.
+          </p>
+
+          {/* CTAs */}
+          <div className="flex flex-col sm:flex-row items-center gap-4">
+            <a href="https://aiohub.pro/register"
+              className="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-500 text-white font-semibold px-8 py-4 rounded-xl text-base transition-all hover:shadow-2xl hover:shadow-indigo-500/30 hover:-translate-y-0.5">
+              Спробувати безкоштовно →
+            </a>
+            <a href="#modules"
+              className="w-full sm:w-auto text-slate-300 hover:text-white font-medium px-8 py-4 rounded-xl text-base border border-white/10 hover:border-white/20 hover:bg-white/5 transition-all">
+              Переглянути модулі
+            </a>
+          </div>
+          <p className="mt-4 text-sm text-slate-500">Реєстрація займає хвилину · Безкоштовно</p>
+        </div>
+
+        {/* Screenshot */}
+        <div className="relative max-w-5xl mx-auto">
+          {/* Glow behind screenshot */}
+          <div className="absolute -inset-4 bg-indigo-500/10 rounded-2xl blur-2xl" />
+
+          {/* Browser frame */}
+          <div className="relative bg-[#0d1526] rounded-2xl border border-white/10 shadow-2xl shadow-black/60 overflow-hidden">
+            {/* Browser chrome */}
+            <div className="bg-[#0a1020] px-4 py-3 flex items-center gap-3 border-b border-white/5">
+              <div className="flex gap-1.5">
+                <div className="w-3 h-3 rounded-full bg-red-500/70" />
+                <div className="w-3 h-3 rounded-full bg-yellow-500/70" />
+                <div className="w-3 h-3 rounded-full bg-green-500/70" />
               </div>
-
-              {/* App Shell */}
-              <div className="flex" style={{ height: '280px' }}>
-                {/* Sidebar */}
-                <div className="w-14 bg-gray-900 border-r border-gray-700/50 flex flex-col items-center py-4 gap-3.5">
-                  <div className="w-7 h-7 rounded-lg bg-blue-600 flex items-center justify-center">
-                    <div className="w-3 h-3 border-2 border-white rounded-sm" />
-                  </div>
-                  {['bg-gray-600', 'bg-gray-600', 'bg-gray-600', 'bg-gray-600', 'bg-gray-600'].map(
-                    (color, i) => (
-                      <div key={i} className={`w-6 h-6 rounded-md ${color}/60`} />
-                    )
-                  )}
-                </div>
-
-                {/* Main */}
-                <div className="flex-1 bg-gray-850 p-4 bg-gray-800">
-                  {/* Header row */}
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="h-4 w-28 bg-gray-600 rounded-md" />
-                    <div className="h-7 w-24 bg-blue-600 rounded-lg" />
-                  </div>
-
-                  {/* Kanban */}
-                  <div className="grid grid-cols-3 gap-3 h-full">
-                    {/* Todo */}
-                    <div className="bg-gray-700/60 rounded-xl p-3 space-y-2">
-                      <div className="flex items-center gap-1.5 mb-2">
-                        <div className="w-2 h-2 rounded-full bg-gray-400" />
-                        <div className="h-3 w-12 bg-gray-500 rounded" />
-                      </div>
-                      {[1, 2].map((i) => (
-                        <div key={i} className="bg-gray-600/80 rounded-lg p-2.5 space-y-1.5">
-                          <div className="h-2 w-full bg-gray-500 rounded" />
-                          <div className="h-2 w-2/3 bg-gray-500 rounded" />
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* In Progress */}
-                    <div className="bg-gray-700/60 rounded-xl p-3 space-y-2">
-                      <div className="flex items-center gap-1.5 mb-2">
-                        <div className="w-2 h-2 rounded-full bg-blue-400" />
-                        <div className="h-3 w-16 bg-blue-500/60 rounded" />
-                      </div>
-                      <div className="bg-blue-900/40 border border-blue-700/40 rounded-lg p-2.5 space-y-1.5">
-                        <div className="h-2 w-full bg-blue-400/50 rounded" />
-                        <div className="h-2 w-1/2 bg-blue-400/50 rounded" />
-                        <div className="h-1.5 w-full bg-gray-600 rounded-full mt-2">
-                          <div className="h-1.5 w-2/3 bg-blue-500 rounded-full" />
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Done */}
-                    <div className="bg-gray-700/60 rounded-xl p-3 space-y-2">
-                      <div className="flex items-center gap-1.5 mb-2">
-                        <div className="w-2 h-2 rounded-full bg-green-400" />
-                        <div className="h-3 w-10 bg-green-500/60 rounded" />
-                      </div>
-                      {[1, 2].map((i) => (
-                        <div key={i} className="bg-green-900/20 border border-green-700/30 rounded-lg p-2.5 space-y-1.5">
-                          <div className="h-2 w-full bg-green-400/40 rounded" />
-                          <div className="h-2 w-3/4 bg-green-400/40 rounded" />
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
+              <div className="flex-1 bg-white/5 rounded-md py-1 px-3 text-slate-500 text-xs text-center max-w-xs mx-auto">
+                aiohub.pro
               </div>
             </div>
-            {/* Glow */}
-            <div className="absolute -inset-4 bg-blue-500/5 rounded-3xl blur-2xl -z-10" />
+            <Image
+              src="/screenshots/dashboard-dark.png"
+              alt="AIOHub Dashboard"
+              width={1200}
+              height={720}
+              className="w-full h-auto"
+              priority
+            />
           </div>
+        </div>
+
+        {/* Stats */}
+        <div className="grid grid-cols-3 gap-6 max-w-lg mx-auto mt-14">
+          {[
+            { val: '14', label: 'модулів' },
+            { val: '100%', label: 'безкоштовно зараз' },
+            { val: '🇺🇦', label: 'зроблено в Україні' },
+          ].map((s) => (
+            <div key={s.val} className="text-center">
+              <div className="text-2xl font-bold text-white">{s.val}</div>
+              <div className="text-sm text-slate-500 mt-0.5">{s.label}</div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

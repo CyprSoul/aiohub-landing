@@ -1,70 +1,48 @@
 'use client';
 
 import Image from 'next/image';
-import { useTranslations, useLocale } from 'next-intl';
+import { useLocale } from 'next-intl';
 import { Link, usePathname } from '@/navigation';
+import { useState, useEffect } from 'react';
 
 export default function Navbar() {
-  const t = useTranslations('Navbar');
   const locale = useLocale();
   const pathname = usePathname();
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-gray-900/95 backdrop-blur-md border-b border-gray-800">
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      scrolled
+        ? 'bg-[#080e1a]/95 backdrop-blur-md border-b border-white/5 shadow-xl shadow-black/20'
+        : 'bg-transparent'
+    }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 shrink-0">
-            <Image src="/logo.svg" alt="AIOHub logo" width={32} height={32} />
-            <span className="text-white text-lg font-bold tracking-tight">
-              AIOHub
-            </span>
+            <Image src="/logo.svg" alt="AIOHub" width={30} height={30} />
+            <span className="text-white text-lg font-bold tracking-tight">AIOHub</span>
           </Link>
 
-          {/* Right side */}
-          <div className="flex items-center gap-2 sm:gap-4">
-            {/* Language switcher */}
-            <div className="flex items-center bg-gray-800 rounded-lg p-0.5">
-              <Link
-                href={pathname}
-                locale="uk"
-                className={`px-2.5 py-1 rounded-md text-sm font-medium transition-colors ${
-                  locale === 'uk'
-                    ? 'bg-blue-600 text-white'
-                    : 'text-gray-400 hover:text-white'
-                }`}
-              >
-                UA
-              </Link>
-              <Link
-                href={pathname}
-                locale="en"
-                className={`px-2.5 py-1 rounded-md text-sm font-medium transition-colors ${
-                  locale === 'en'
-                    ? 'bg-blue-600 text-white'
-                    : 'text-gray-400 hover:text-white'
-                }`}
-              >
-                EN
-              </Link>
+          <nav className="hidden md:flex items-center gap-1">
+            <a href="#features" className="text-slate-400 hover:text-white text-sm font-medium px-3 py-2 rounded-lg hover:bg-white/5 transition-all">Функції</a>
+            <a href="#modules" className="text-slate-400 hover:text-white text-sm font-medium px-3 py-2 rounded-lg hover:bg-white/5 transition-all">Модулі</a>
+            <a href="#comparison" className="text-slate-400 hover:text-white text-sm font-medium px-3 py-2 rounded-lg hover:bg-white/5 transition-all">Порівняння</a>
+            <a href="#pricing" className="text-slate-400 hover:text-white text-sm font-medium px-3 py-2 rounded-lg hover:bg-white/5 transition-all">Ціни</a>
+          </nav>
+
+          <div className="flex items-center gap-2">
+            <div className="flex items-center bg-white/5 border border-white/10 rounded-lg p-0.5">
+              <Link href={pathname} locale="uk" className={`px-2.5 py-1 rounded-md text-xs font-semibold transition-all ${locale === 'uk' ? 'bg-indigo-600 text-white' : 'text-slate-400 hover:text-white'}`}>UA</Link>
+              <Link href={pathname} locale="en" className={`px-2.5 py-1 rounded-md text-xs font-semibold transition-all ${locale === 'en' ? 'bg-indigo-600 text-white' : 'text-slate-400 hover:text-white'}`}>EN</Link>
             </div>
-
-            {/* Login */}
-            <a
-              href="https://app.aiohub.app/login"
-              className="hidden sm:block text-gray-300 hover:text-white text-sm font-medium transition-colors"
-            >
-              {t('login')}
-            </a>
-
-            {/* Register */}
-            <a
-              href="https://app.aiohub.app/register"
-              className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-3 sm:px-4 py-2 rounded-lg transition-colors whitespace-nowrap"
-            >
-              <span className="hidden sm:inline">{t('register')}</span>
-              <span className="sm:hidden">Старт</span>
-            </a>
+            <a href="https://aiohub.pro/login" className="hidden sm:block text-slate-300 hover:text-white text-sm font-medium px-3 py-2 transition-colors">Увійти</a>
+            <a href="https://aiohub.pro/register" className="bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-all hover:shadow-lg hover:shadow-indigo-500/25 whitespace-nowrap">Спробувати</a>
           </div>
         </div>
       </div>

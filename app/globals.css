@@ -3,20 +3,40 @@
 @tailwind utilities;
 
 @layer base {
-  html {
-    scroll-behavior: smooth;
-  }
+  html { scroll-behavior: smooth; }
+  body { background-color: #080e1a; color: #f1f5f9; }
 }
 
 @layer utilities {
+  /* Base fade-up (default) */
   .section-fade {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(28px);
     transition: opacity 0.6s ease, transform 0.6s ease;
   }
+  .section-fade.visible { opacity: 1; transform: translateY(0); }
 
-  .section-fade.visible {
-    opacity: 1;
-    transform: translateY(0);
+  /* Fade from left */
+  .section-fade-left {
+    opacity: 0;
+    transform: translateX(-32px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
   }
+  .section-fade-left.visible { opacity: 1; transform: translateX(0); }
+
+  /* Fade from right */
+  .section-fade-right {
+    opacity: 0;
+    transform: translateX(32px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .section-fade-right.visible { opacity: 1; transform: translateX(0); }
+
+  /* Zoom in */
+  .section-zoom {
+    opacity: 0;
+    transform: scale(0.94);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .section-zoom.visible { opacity: 1; transform: scale(1); }
 }

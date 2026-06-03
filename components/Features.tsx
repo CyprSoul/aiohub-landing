@@ -1,57 +1,86 @@
-import { useTranslations } from 'next-intl';
+import Image from 'next/image';
+import SectionFade from './SectionFade';
+
+const features = [
+  {
+    tag: 'Завдання і Проєкти',
+    title: 'Kanban, спринти, пріоритети — все в одному місці',
+    desc: 'Управляйте задачами будь-яким способом: Kanban-дошка, список або беклог. Дедлайни автоматично з\'являються в Календарі. Прогрес проєкту видно на burndown-графіку в Аналітиці.',
+    bullets: ['Kanban і беклог', 'Автоматичний burndown', 'Підзадачі і чеклісти', 'Фільтри і пошук'],
+    img: '/screenshots/task.png',
+    imgAlt: 'AIOHub Tasks',
+    reverse: false,
+  },
+  {
+    tag: 'Аналітика',
+    title: 'Повна картина без зайвих дашбордів',
+    desc: 'Burndown-графіки, завантаження команди, статистика задач — все оновлюється в реальному часі. Більше не потрібно збирати дані з різних джерел вручну.',
+    bullets: ['Burndown і velocity', 'Завантаження команди', 'Статистика по статусах', 'Фільтр по тижню / місяцю'],
+    img: '/screenshots/analytics.png',
+    imgAlt: 'AIOHub Analytics',
+    reverse: true,
+  },
+  {
+    tag: 'Чат',
+    title: 'Командна комунікація прямо в контексті роботи',
+    desc: 'Канали, особисті повідомлення, треди, файли — і все це поряд із задачами. Перетвори будь-яке повідомлення на задачу одним кліком.',
+    bullets: ['Канали і DM', 'Треди і відповіді', 'Файли і зображення', 'Статуси присутності'],
+    img: '/screenshots/chat.png',
+    imgAlt: 'AIOHub Chat',
+    reverse: false,
+  },
+];
 
 export default function Features() {
-  const t = useTranslations('Features');
-
-  const features = [
-    {
-      icon: '🔗',
-      title: t('f1_title'),
-      desc: t('f1_desc'),
-      color: 'from-blue-500/10 to-blue-600/5 border-blue-500/20',
-      iconBg: 'bg-blue-100',
-    },
-    {
-      icon: '⚡',
-      title: t('f2_title'),
-      desc: t('f2_desc'),
-      color: 'from-green-500/10 to-green-600/5 border-green-500/20',
-      iconBg: 'bg-green-100',
-    },
-    {
-      icon: '📈',
-      title: t('f3_title'),
-      desc: t('f3_desc'),
-      color: 'from-purple-500/10 to-purple-600/5 border-purple-500/20',
-      iconBg: 'bg-purple-100',
-    },
-  ];
-
   return (
-    <section className="bg-white py-20 sm:py-28">
+    <section id="features" className="bg-[#080e1a] py-20 sm:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-14">
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
-            {t('title')}
-          </h2>
-          <p className="mt-3 text-gray-500 text-lg max-w-2xl mx-auto">
-            Дані в AIOHub не ізольовані — кожен модуль збагачує інший
-          </p>
-        </div>
+        <SectionFade anim="zoom" className="text-center mb-16">
+          <div className="inline-block text-xs font-semibold uppercase tracking-widest text-indigo-400 bg-indigo-500/10 px-3 py-1 rounded-full mb-4">Функції</div>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white">Все що потрібно команді</h2>
+          <p className="mt-3 text-slate-400 text-lg">Модулі не ізольовані — вони збагачують один одного</p>
+        </SectionFade>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div className="space-y-24">
           {features.map((f, i) => (
-            <div
-              key={i}
-              className={`rounded-2xl p-8 bg-gradient-to-br ${f.color} border text-center`}
-            >
-              <div className={`w-14 h-14 ${f.iconBg} rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4`}>
-                {f.icon}
-              </div>
-              <h3 className="text-gray-900 font-bold text-lg mb-2">
-                {f.title}
-              </h3>
-              <p className="text-gray-600 text-sm leading-relaxed">{f.desc}</p>
+            <div key={i} className={`flex flex-col ${f.reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center gap-10 lg:gap-16`}>
+              {/* Text */}
+              <SectionFade anim={f.reverse ? 'right' : 'left'} className="flex-1 max-w-xl">
+                <div className="inline-block text-xs font-semibold uppercase tracking-widest text-indigo-400 bg-indigo-500/10 px-3 py-1 rounded-full mb-4">
+                  {f.tag}
+                </div>
+                <h3 className="text-2xl sm:text-3xl font-bold text-white leading-snug mb-4">{f.title}</h3>
+                <p className="text-slate-400 leading-relaxed mb-6">{f.desc}</p>
+                <ul className="space-y-2.5">
+                  {f.bullets.map((b) => (
+                    <li key={b} className="flex items-center gap-2.5 text-slate-300 text-sm">
+                      <span className="w-5 h-5 rounded-full bg-indigo-500/15 border border-indigo-500/30 flex items-center justify-center shrink-0">
+                        <svg className="w-3 h-3 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                      </span>
+                      {b}
+                    </li>
+                  ))}
+                </ul>
+              </SectionFade>
+
+              {/* Screenshot */}
+              <SectionFade anim={f.reverse ? 'left' : 'right'} className="flex-1 w-full max-w-2xl">
+                <div className="relative">
+                  <div className="absolute -inset-3 bg-indigo-500/8 rounded-2xl blur-xl" />
+                  <div className="relative bg-[#0d1526] rounded-2xl border border-white/8 overflow-hidden shadow-2xl shadow-black/40">
+                    <div className="bg-[#0a1020] px-3 py-2.5 flex items-center gap-2 border-b border-white/5">
+                      <div className="flex gap-1">
+                        <div className="w-2.5 h-2.5 rounded-full bg-red-500/60" />
+                        <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/60" />
+                        <div className="w-2.5 h-2.5 rounded-full bg-green-500/60" />
+                      </div>
+                    </div>
+                    <Image src={f.img} alt={f.imgAlt} width={800} height={500} className="w-full h-auto" />
+                  </div>
+                </div>
+              </SectionFade>
             </div>
           ))}
         </div>

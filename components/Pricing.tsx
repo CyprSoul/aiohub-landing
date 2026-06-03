@@ -1,104 +1,63 @@
-import { useTranslations } from 'next-intl';
+import SectionFade from './SectionFade';
 
-function Check() {
-  return (
-    <svg className="w-5 h-5 text-blue-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+const features = [
+  'Всі 14 модулів без обмежень',
+  'Необмежена кількість користувачів',
+  'Необмежене сховище файлів',
+  'Реальний час, чат, сповіщення',
+  'Аналітика, HR, аудит лог',
+  'Оновлення кожного тижня',
+];
+
+const Check = ({ text }: { text: string }) => (
+  <li className="flex items-start gap-2.5 text-sm text-slate-300">
+    <svg className="w-4 h-4 text-indigo-400 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
     </svg>
-  );
-}
+    {text}
+  </li>
+);
 
 export default function Pricing() {
-  const t = useTranslations('Pricing');
-
   return (
-    <section className="bg-white py-20 sm:py-28">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-14">
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
-            {t('title')}
-          </h2>
-          <p className="mt-3 text-gray-500 text-lg">{t('subtitle')}</p>
-        </div>
+    <section id="pricing" className="bg-[#080e1a] py-20 sm:py-24">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <SectionFade anim="up" className="text-center mb-12">
+          <div className="inline-block text-xs font-semibold uppercase tracking-widest text-indigo-400 bg-indigo-500/10 px-3 py-1 rounded-full mb-4">Ціни</div>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white">Зараз — безкоштовно</h2>
+          <p className="mt-3 text-slate-400 text-lg max-w-xl mx-auto">
+            AIOHub на стадії раннього доступу. Всі функції відкриті повністю — поки ми будуємо продукт разом з першими користувачами.
+          </p>
+        </SectionFade>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          {/* Free */}
-          <div className="rounded-2xl border border-gray-200 p-8 flex flex-col">
-            <div>
-              <h3 className="text-xl font-bold text-gray-900">{t('free_name')}</h3>
-              <div className="mt-4 flex items-baseline gap-1">
-                <span className="text-4xl font-bold text-gray-900">{t('free_price')}</span>
-                <span className="text-gray-500 text-sm">/ {t('free_period')}</span>
+        <SectionFade anim="zoom">
+          <div className="bg-[#0d1526] border border-indigo-500/25 rounded-3xl p-8 sm:p-10">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mb-8">
+              <div>
+                <div className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold px-3 py-1 rounded-full mb-3">
+                  <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" />
+                  Ранній доступ
+                </div>
+                <div className="flex items-baseline gap-2">
+                  <span className="text-5xl font-bold text-white">$0</span>
+                  <span className="text-slate-400">/ назавжди поки в Early Access</span>
+                </div>
               </div>
+              <a href="https://aiohub.pro/register"
+                className="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-500 text-white font-semibold px-8 py-3.5 rounded-xl text-sm transition-all hover:shadow-xl hover:shadow-indigo-500/25 hover:-translate-y-0.5 text-center">
+                Зареєструватись →
+              </a>
             </div>
-            <ul className="mt-8 space-y-3 flex-1">
-              {[t('free_f1'), t('free_f2'), t('free_f3')].map((f) => (
-                <li key={f} className="flex items-center gap-2 text-gray-600 text-sm">
-                  <Check /> {f}
-                </li>
-              ))}
-            </ul>
-            <a
-              href="https://app.aiohub.app/register"
-              className="mt-8 block text-center bg-gray-100 hover:bg-gray-200 text-gray-900 font-semibold py-3 rounded-xl transition-colors"
-            >
-              {t('free_cta')}
-            </a>
-          </div>
 
-          {/* Pro — highlighted */}
-          <div className="rounded-2xl border-2 border-blue-500 p-8 flex flex-col relative shadow-lg shadow-blue-500/10">
-            <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-              <span className="bg-blue-600 text-white text-xs font-bold px-4 py-1.5 rounded-full">
-                {t('popular')}
-              </span>
-            </div>
-            <div>
-              <h3 className="text-xl font-bold text-gray-900">{t('pro_name')}</h3>
-              <div className="mt-4 flex items-baseline gap-1">
-                <span className="text-4xl font-bold text-gray-900">{t('pro_price')}</span>
-                <span className="text-gray-500 text-sm">/ {t('pro_period')}</span>
-              </div>
-            </div>
-            <ul className="mt-8 space-y-3 flex-1">
-              {[t('pro_f1'), t('pro_f2'), t('pro_f3'), t('pro_f4')].map((f) => (
-                <li key={f} className="flex items-center gap-2 text-gray-600 text-sm">
-                  <Check /> {f}
-                </li>
-              ))}
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {features.map((f) => <Check key={f} text={f} />)}
             </ul>
-            <a
-              href="https://app.aiohub.app/register"
-              className="mt-8 block text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-xl transition-colors"
-            >
-              {t('pro_cta')}
-            </a>
-          </div>
 
-          {/* Business */}
-          <div className="rounded-2xl border border-gray-200 p-8 flex flex-col">
-            <div>
-              <h3 className="text-xl font-bold text-gray-900">{t('biz_name')}</h3>
-              <div className="mt-4 flex items-baseline gap-1">
-                <span className="text-4xl font-bold text-gray-900">{t('biz_price')}</span>
-                <span className="text-gray-500 text-sm">/ {t('biz_period')}</span>
-              </div>
-            </div>
-            <ul className="mt-8 space-y-3 flex-1">
-              {[t('biz_f1'), t('biz_f2'), t('biz_f3'), t('biz_f4')].map((f) => (
-                <li key={f} className="flex items-center gap-2 text-gray-600 text-sm">
-                  <Check /> {f}
-                </li>
-              ))}
-            </ul>
-            <a
-              href="https://app.aiohub.app/register"
-              className="mt-8 block text-center bg-gray-100 hover:bg-gray-200 text-gray-900 font-semibold py-3 rounded-xl transition-colors"
-            >
-              {t('biz_cta')}
-            </a>
+            <p className="mt-6 text-xs text-slate-600 text-center">
+              У майбутньому з'являться платні плани з розширеними можливостями. Поточні користувачі отримають спеціальні умови.
+            </p>
           </div>
-        </div>
+        </SectionFade>
       </div>
     </section>
   );
