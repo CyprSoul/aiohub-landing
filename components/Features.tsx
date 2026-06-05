@@ -1,54 +1,42 @@
 import Image from 'next/image';
 import SectionFade from './SectionFade';
-
-const features = [
-  {
-    tag: 'Завдання і Проєкти',
-    title: 'Kanban, спринти, пріоритети — все в одному місці',
-    desc: 'Управляйте задачами будь-яким способом: Kanban-дошка, список або беклог. Дедлайни автоматично з\'являються в Календарі. Прогрес проєкту видно на burndown-графіку в Аналітиці.',
-    bullets: ['Kanban і беклог', 'Автоматичний burndown', 'Підзадачі і чеклісти', 'Фільтри і пошук'],
-    img: '/screenshots/task.png',
-    imgAlt: 'AIOHub Tasks',
-    reverse: false,
-  },
-  {
-    tag: 'Аналітика',
-    title: 'Повна картина без зайвих дашбордів',
-    desc: 'Burndown-графіки, завантаження команди, статистика задач — все оновлюється в реальному часі. Більше не потрібно збирати дані з різних джерел вручну.',
-    bullets: ['Burndown і velocity', 'Завантаження команди', 'Статистика по статусах', 'Фільтр по тижню / місяцю'],
-    img: '/screenshots/analytics.png',
-    imgAlt: 'AIOHub Analytics',
-    reverse: true,
-  },
-  {
-    tag: 'Чат',
-    title: 'Командна комунікація прямо в контексті роботи',
-    desc: 'Канали, особисті повідомлення, треди, файли — і все це поряд із задачами. Перетвори будь-яке повідомлення на задачу одним кліком.',
-    bullets: ['Канали і DM', 'Треди і відповіді', 'Файли і зображення', 'Статуси присутності'],
-    img: '/screenshots/chat.png',
-    imgAlt: 'AIOHub Chat',
-    reverse: false,
-  },
-];
+import { useTranslations } from 'next-intl';
 
 export default function Features() {
+  const t = useTranslations('Features');
+
+  const features = [
+    {
+      tag: t('f1_tag'), title: t('f1_title'), desc: t('f1_desc'),
+      bullets: [t('f1_b1'), t('f1_b2'), t('f1_b3'), t('f1_b4')],
+      img: '/screenshots/task.png', imgAlt: 'AIOHub Tasks', reverse: false,
+    },
+    {
+      tag: t('f2_tag'), title: t('f2_title'), desc: t('f2_desc'),
+      bullets: [t('f2_b1'), t('f2_b2'), t('f2_b3'), t('f2_b4')],
+      img: '/screenshots/analytics.png', imgAlt: 'AIOHub Analytics', reverse: true,
+    },
+    {
+      tag: t('f3_tag'), title: t('f3_title'), desc: t('f3_desc'),
+      bullets: [t('f3_b1'), t('f3_b2'), t('f3_b3'), t('f3_b4')],
+      img: '/screenshots/chat.png', imgAlt: 'AIOHub Chat', reverse: false,
+    },
+  ];
+
   return (
     <section id="features" className="bg-[#080e1a] py-20 sm:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionFade anim="zoom" className="text-center mb-16">
-          <div className="inline-block text-xs font-semibold uppercase tracking-widest text-indigo-400 bg-indigo-500/10 px-3 py-1 rounded-full mb-4">Функції</div>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white">Все що потрібно команді</h2>
-          <p className="mt-3 text-slate-400 text-lg">Модулі не ізольовані — вони збагачують один одного</p>
+          <div className="inline-block text-xs font-semibold uppercase tracking-widest text-indigo-400 bg-indigo-500/10 px-3 py-1 rounded-full mb-4">{t('badge')}</div>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white">{t('heading')}</h2>
+          <p className="mt-3 text-slate-400 text-lg">{t('subtitle')}</p>
         </SectionFade>
 
         <div className="space-y-24">
           {features.map((f, i) => (
             <div key={i} className={`flex flex-col ${f.reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center gap-10 lg:gap-16`}>
-              {/* Text */}
               <SectionFade anim={f.reverse ? 'right' : 'left'} className="flex-1 max-w-xl">
-                <div className="inline-block text-xs font-semibold uppercase tracking-widest text-indigo-400 bg-indigo-500/10 px-3 py-1 rounded-full mb-4">
-                  {f.tag}
-                </div>
+                <div className="inline-block text-xs font-semibold uppercase tracking-widest text-indigo-400 bg-indigo-500/10 px-3 py-1 rounded-full mb-4">{f.tag}</div>
                 <h3 className="text-2xl sm:text-3xl font-bold text-white leading-snug mb-4">{f.title}</h3>
                 <p className="text-slate-400 leading-relaxed mb-6">{f.desc}</p>
                 <ul className="space-y-2.5">
@@ -65,7 +53,6 @@ export default function Features() {
                 </ul>
               </SectionFade>
 
-              {/* Screenshot */}
               <SectionFade anim={f.reverse ? 'left' : 'right'} className="flex-1 w-full max-w-2xl">
                 <div className="relative">
                   <div className="absolute -inset-3 bg-indigo-500/8 rounded-2xl blur-xl" />

@@ -1,36 +1,23 @@
 import SectionFade from './SectionFade';
-
-const capabilities = [
-  {
-    icon: '🔄',
-    title: 'Все синхронізовано',
-    desc: 'Задача отримала дедлайн — вона вже в Календарі. Залогований час — вже в Аналітиці. Модулі обмінюються даними автоматично.',
-  },
-  {
-    icon: '🎯',
-    title: 'Один контекст для команди',
-    desc: 'Обговорення, файли, задачі й рішення — в одному місці. Новий член команди розбирається за годину, не за тиждень.',
-  },
-  {
-    icon: '📊',
-    title: 'Повна картина для керівника',
-    desc: 'Хто що робить, які дедлайни горять, як завантажена команда — все видно в реальному часі без ручних звітів.',
-  },
-  {
-    icon: '⚡',
-    title: 'Старт за 2 хвилини',
-    desc: 'Реєстрація, перші задачі, запрошення команди — і ви вже працюєте. Жодних складних налаштувань і тривалого онбордингу.',
-  },
-];
+import { useTranslations } from 'next-intl';
 
 export default function Problem() {
+  const t = useTranslations('Problem');
+
+  const capabilities = [
+    { icon: '🔄', title: t('c1_title'), desc: t('c1_desc') },
+    { icon: '🎯', title: t('c2_title'), desc: t('c2_desc') },
+    { icon: '📊', title: t('c3_title'), desc: t('c3_desc') },
+    { icon: '⚡', title: t('c4_title'), desc: t('c4_desc') },
+  ];
+
   return (
     <section className="bg-[#080e1a] py-20 sm:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionFade anim="up" className="text-center mb-14">
-          <div className="inline-block text-xs font-semibold uppercase tracking-widest text-indigo-400 bg-indigo-500/10 px-3 py-1 rounded-full mb-4">Як це працює</div>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white">Один застосунок — повний робочий процес</h2>
-          <p className="mt-3 text-slate-400 text-lg max-w-xl mx-auto">Від задачі до аналітики без переключення між інструментами</p>
+          <div className="inline-block text-xs font-semibold uppercase tracking-widest text-indigo-400 bg-indigo-500/10 px-3 py-1 rounded-full mb-4">{t('badge')}</div>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white">{t('heading')}</h2>
+          <p className="mt-3 text-slate-400 text-lg max-w-xl mx-auto">{t('subtitle')}</p>
         </SectionFade>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">

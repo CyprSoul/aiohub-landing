@@ -1,13 +1,5 @@
 import SectionFade from './SectionFade';
-
-const features = [
-  'Всі 14 модулів без обмежень',
-  'Необмежена кількість користувачів',
-  'Необмежене сховище файлів',
-  'Реальний час, чат, сповіщення',
-  'Аналітика, HR, аудит лог',
-  'Оновлення кожного тижня',
-];
+import { useTranslations } from 'next-intl';
 
 const Check = ({ text }: { text: string }) => (
   <li className="flex items-start gap-2.5 text-sm text-slate-300">
@@ -19,15 +11,17 @@ const Check = ({ text }: { text: string }) => (
 );
 
 export default function Pricing() {
+  const t = useTranslations('Pricing');
+
+  const features = [t('f1'), t('f2'), t('f3'), t('f4'), t('f5'), t('f6')];
+
   return (
     <section id="pricing" className="bg-[#080e1a] py-20 sm:py-24">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionFade anim="up" className="text-center mb-12">
-          <div className="inline-block text-xs font-semibold uppercase tracking-widest text-indigo-400 bg-indigo-500/10 px-3 py-1 rounded-full mb-4">Ціни</div>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white">Зараз — безкоштовно</h2>
-          <p className="mt-3 text-slate-400 text-lg max-w-xl mx-auto">
-            AIOHub на стадії раннього доступу. Всі функції відкриті повністю — поки ми будуємо продукт разом з першими користувачами.
-          </p>
+          <div className="inline-block text-xs font-semibold uppercase tracking-widest text-indigo-400 bg-indigo-500/10 px-3 py-1 rounded-full mb-4">{t('badge')}</div>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white">{t('heading')}</h2>
+          <p className="mt-3 text-slate-400 text-lg max-w-xl mx-auto">{t('subtitle')}</p>
         </SectionFade>
 
         <SectionFade anim="zoom">
@@ -36,16 +30,16 @@ export default function Pricing() {
               <div>
                 <div className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold px-3 py-1 rounded-full mb-3">
                   <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" />
-                  Ранній доступ
+                  {t('early_access')}
                 </div>
                 <div className="flex items-baseline gap-2">
-                  <span className="text-5xl font-bold text-white">$0</span>
-                  <span className="text-slate-400">/ назавжди поки в Early Access</span>
+                  <span className="text-5xl font-bold text-white">{t('price')}</span>
+                  <span className="text-slate-400">{t('price_note')}</span>
                 </div>
               </div>
               <a href="https://aiohub.pro/register"
                 className="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-500 text-white font-semibold px-8 py-3.5 rounded-xl text-sm transition-all hover:shadow-xl hover:shadow-indigo-500/25 hover:-translate-y-0.5 text-center">
-                Зареєструватись →
+                {t('cta')}
               </a>
             </div>
 
@@ -53,9 +47,7 @@ export default function Pricing() {
               {features.map((f) => <Check key={f} text={f} />)}
             </ul>
 
-            <p className="mt-6 text-xs text-slate-600 text-center">
-              У майбутньому з'являться платні плани з розширеними можливостями. Поточні користувачі отримають спеціальні умови.
-            </p>
+            <p className="mt-6 text-xs text-slate-600 text-center">{t('footnote')}</p>
           </div>
         </SectionFade>
       </div>

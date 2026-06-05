@@ -1,32 +1,33 @@
 import SectionFade from './SectionFade';
-
-const modules = [
-  { icon: '📋', name: 'Завдання',    desc: 'Kanban, дедлайни, пріоритети' },
-  { icon: '🚀', name: 'Проєкти',     desc: 'Burndown, спринти, ролі' },
-  { icon: '💬', name: 'Чат',         desc: 'Канали, DM, треди, файли' },
-  { icon: '📅', name: 'Календар',    desc: 'Події, дедлайни, мітинги' },
-  { icon: '📈', name: 'Аналітика',   desc: 'Workload, звіти, графіки' },
-  { icon: '👥', name: 'HR',          desc: 'Відпустки, команда, профілі' },
-  { icon: '📁', name: 'Файли',       desc: 'Сховище, версії, папки' },
-  { icon: '📖', name: 'Wiki',        desc: 'Документація, нотатки' },
-  { icon: '⏱️', name: 'Облік часу',  desc: 'Трекінг, логи, звіти' },
-  { icon: '📦', name: 'Інвентар',    desc: 'Обладнання, ресурси' },
-  { icon: '💰', name: 'Фінанси',     desc: 'Витрати, доходи, бюджети' },
-  { icon: '🔔', name: 'Нотифікації', desc: 'Real-time, дайджести' },
-  { icon: '🔑', name: 'API',         desc: 'Ключі, вебхуки, інтеграції' },
-  { icon: '🛡️', name: 'Аудит лог',  desc: 'Дії команди, безпека' },
-];
+import { useTranslations } from 'next-intl';
 
 export default function Modules() {
+  const t = useTranslations('Modules');
+
+  const modules = [
+    { icon: '📋', name: t('m1_name'),  desc: t('m1_desc') },
+    { icon: '🚀', name: t('m2_name'),  desc: t('m2_desc') },
+    { icon: '💬', name: t('m3_name'),  desc: t('m3_desc') },
+    { icon: '📅', name: t('m4_name'),  desc: t('m4_desc') },
+    { icon: '📈', name: t('m5_name'),  desc: t('m5_desc') },
+    { icon: '👥', name: t('m6_name'),  desc: t('m6_desc') },
+    { icon: '📁', name: t('m7_name'),  desc: t('m7_desc') },
+    { icon: '📖', name: t('m8_name'),  desc: t('m8_desc') },
+    { icon: '⏱️', name: t('m9_name'),  desc: t('m9_desc') },
+    { icon: '📦', name: t('m10_name'), desc: t('m10_desc') },
+    { icon: '💰', name: t('m11_name'), desc: t('m11_desc') },
+    { icon: '🔔', name: t('m12_name'), desc: t('m12_desc') },
+    { icon: '🔑', name: t('m13_name'), desc: t('m13_desc') },
+    { icon: '🛡️', name: t('m14_name'), desc: t('m14_desc') },
+  ];
+
   return (
     <section id="modules" className="bg-[#060b16] py-20 sm:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionFade anim="up" className="text-center mb-14">
-          <div className="inline-block text-xs font-semibold uppercase tracking-widest text-indigo-400 bg-indigo-500/10 px-3 py-1 rounded-full mb-4">Модулі</div>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white">14+ модулів. Один застосунок.</h2>
-          <p className="mt-3 text-slate-400 text-lg max-w-xl mx-auto">
-            Всі інструменти команди в одному місці — і всі вони знають одне про одного
-          </p>
+          <div className="inline-block text-xs font-semibold uppercase tracking-widest text-indigo-400 bg-indigo-500/10 px-3 py-1 rounded-full mb-4">{t('badge')}</div>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white">{t('heading')}</h2>
+          <p className="mt-3 text-slate-400 text-lg max-w-xl mx-auto">{t('subtitle')}</p>
         </SectionFade>
 
         <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3">
